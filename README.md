@@ -696,17 +696,6 @@ The project creates a set of trained model artifacts and evaluation outputs.
 - `shap_global_importance.png` — SHAP importance plot
 - `shap_local_explanation.csv` — local explanation values for a sample
 
-## Limitations
-
-This project is a research-oriented deep learning workflow for a tabular predictive maintenance dataset and it has several important limitations:
-
-- The dataset is a benchmark dataset used for experimentation in this repository; it is not described here as a live production maintenance log from an industrial system.
-- The failure rate is low (3.39% in the generated EDA summary), which makes the task significantly imbalanced.
-- Precision is low in the repository’s model results, which reflects the difficulty of separating the minority failure class from the majority class in an imbalanced setting.
-- The models are trained and evaluated on a fixed tabular split. There is no deployment pipeline, monitoring layer, or production validation system in the repository.
-- The LSTM is applied to a feature vector reshaped to a sequence-like input (`(samples, features, 1)`) rather than to a real multi-step temporal sequence. The project does not implement a true historical time-series forecasting pipeline.
-- The backend API loads a single trained MLP and performs inference on a single feature vector. It is not a distributed or asynchronous inference system.
-
 ## Future Improvements
 
 The following are realistic directions for extension, but they are not implemented in the current repository:
@@ -718,14 +707,6 @@ The following are realistic directions for extension, but they are not implement
 - Add automated tests for the API and validation of request/response payloads.
 - Add a simple frontend or dashboard for interactive prediction and explanation visualization.
 - Improve the API to support batch prediction and more detailed error handling.
-
-## Team / Academic Context
-
-This project is structured as a university-style deep learning project and repository for applied predictive maintenance research. There is no team or member-specific metadata in the codebase that would support a formal team attribution section beyond the project description itself.
-
-## License
-
-No explicit license file was found in the repository, and no license information is declared in the project files reviewed for this README. As a result, no license section is included here.
 
 ## References
 
