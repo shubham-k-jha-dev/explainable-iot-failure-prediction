@@ -1,0 +1,8 @@
+Metric,Value
+rows,10000.0
+columns,14.0
+missing_values,0.0
+duplicate_rows,0.0
+failure_samples,339.0
+no_failure_samples,9661.0
+failure_percentage,3.39
