@@ -64,7 +64,7 @@ The repository implements a straightforward machine learning pipeline:
    - `api/main.py` loads the trained MLP and the preprocessor and serves prediction and explanation endpoints through FastAPI.
 
 9. Frontend
-   - The `frontend/` directory exists in the repository but is currently empty; no frontend application is implemented in this codebase.
+   - `frontend/` contains a React (Vite + Recharts) dashboard for interactive prediction, SHAP explanations, model comparison, and dataset exploration.
 
 ## Dataset
 
@@ -605,6 +605,26 @@ The application is available at:
 
 - `http://localhost:8000/docs`
 - `http://localhost:8000/health`
+
+### 6. Start the React frontend
+
+With the backend running on port 8000, in a second terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`. The Vite dev server proxies `/api/*` to the FastAPI backend. The dashboard has five pages:
+
+- **Overview** — key dataset and model numbers and the pipeline at a glance
+- **Predict & Explain** — sensor sliders with live MLP prediction, a per-prediction SHAP breakdown, a what-if sweep chart, preset scenarios, and random real records from the dataset to check against the actual outcome
+- **Model Comparison** — metrics table, bar chart, ROC curves, and a decision-threshold slider that recomputes each model's confusion matrix live
+- **Explainability** — global SHAP importance and a local explanation example
+- **Dataset** — failure modes, failure rate by machine type, and the EDA plots
+
+The frontend relies on these read-only API endpoints, in addition to `/predict` and `/explain`: `GET /metrics`, `GET /shap/global`, `GET /dataset/summary`, `GET /dataset/sample`, `POST /sweep`, and the report images served at `/static/reports/`.
 
 ## API Examples
 

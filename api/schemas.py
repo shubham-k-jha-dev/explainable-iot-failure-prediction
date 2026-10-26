@@ -34,3 +34,19 @@ class HealthResponse(BaseModel):
     status: str
     model: str
     device: str
+
+
+class SweepRequest(BaseModel):
+    input: PredictionRequest
+    feature: str
+    steps: int = Field(40, ge=5, le=200)
+
+
+class SweepPoint(BaseModel):
+    value: float
+    failure_probability: float
+
+
+class SweepResponse(BaseModel):
+    feature: str
+    points: list[SweepPoint]
